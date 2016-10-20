@@ -1,0 +1,6 @@
+framework module DataContext {
+  umbrella header "DataContext-umbrella.h"
+
+  export *
+  module * { export * }
+}
