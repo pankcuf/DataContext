@@ -10,14 +10,12 @@ import DataContext
 
 class DiscogsTableContext: TableDataContext {
 	
-	fileprivate var headerReuseId:String!
 	fileprivate var cellReuseId:String!
 
 	override init(transport: DataTransport?) {
 		
 		super.init(transport: transport)
 		
-		self.headerReuseId = "MatchesDaySectionHeaderView"
 		self.cellReuseId = "DiscogsTableViewCell"
 	}
 
@@ -25,10 +23,6 @@ class DiscogsTableContext: TableDataContext {
 		return [self.cellReuseId]
 	}
 	
-	override func uniqueHeaderIds() -> [String] {
-		return [self.headerReuseId]
-	}
-
 	override func update(_ response: DataResponseContext?) -> ViewUpdateContext? {
 		
 		if let parsedResponse = response as? DiscogsJsonResponse {
