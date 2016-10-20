@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DataContext'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'A data layers divided into contexts'
 
 # This description is used to generate tags and improve search results.
@@ -23,7 +23,7 @@ TODO: Add long description of the pod here.
 
   s.homepage         = 'https://github.com/pankcuf/DataContext'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Владимир Пирогов' => 'wladimir.pirogov@gmail.com' }
+  s.author           = { 'Vladimir Pirogov' => 'wladimir.pirogov@gmail.com' }
   s.source           = { :git => 'https://github.com/pankcuf/DataContext.git', :tag => s.version.to_s }
   s.ios.deployment_target = '8.0'
 

@@ -1,6 +1,6 @@
 # DataContext
 
-[![CI Status](http://img.shields.io/travis/Владимир Пирогов/DataContext.svg?style=flat)](https://travis-ci.org/Владимир Пирогов/DataContext)
+[![CI Status](http://img.shields.io/travis/Vladimir Pirogov/DataContext.svg?style=flat)](https://travis-ci.org/Vladimir Pirogov/DataContext)
 [![Version](https://img.shields.io/cocoapods/v/DataContext.svg?style=flat)](http://cocoapods.org/pods/DataContext)
 [![License](https://img.shields.io/cocoapods/l/DataContext.svg?style=flat)](http://cocoapods.org/pods/DataContext)
 [![Platform](https://img.shields.io/cocoapods/p/DataContext.svg?style=flat)](http://cocoapods.org/pods/DataContext)
@@ -17,12 +17,12 @@ DataContext is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "DataContext"
+pod 'DataContext', :git => 'https://github.com/pankcuf/DataContext'
 ```
 
 ## Author
 
-Владимир Пирогов, vpirogov@media-t.ru
+Vladimir Pirogov, wladimir.pirogov@gmail.com
 
 ## License
 
