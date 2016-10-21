@@ -147,8 +147,6 @@ extension UITableView {
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: reuseId)!
 		
-		cell.context = cellContext
-		
 		if self.rowHeight == UITableViewAutomaticDimension {
 			
 			cell.contentView.setNeedsLayout()
@@ -163,8 +161,6 @@ extension UITableView {
 		if let headerSectionContext = self.tableDataContext()?.sectionContext[section].headerContext {
 			
 			if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerSectionContext.reuseId) {
-				
-				header.context = headerSectionContext
 				
 				if self.sectionHeaderHeight == UITableViewAutomaticDimension {
 					
@@ -184,8 +180,6 @@ extension UITableView {
 		if let footerSectionContext = self.tableDataContext()?.sectionContext[section].footerContext {
 			
 			if let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: footerSectionContext.reuseId) {
-				
-				footer.context = footerSectionContext
 				
 				if self.sectionFooterHeight == UITableViewAutomaticDimension {
 					
