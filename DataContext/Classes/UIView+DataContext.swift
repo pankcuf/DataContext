@@ -23,12 +23,15 @@ extension UIView {
 		}
 	}
 
-	
 	public func requestContextUpdates(_ request: DataRequestContext<DataResponseContext>) {
 		
 		self.context?.requestUpdate(with: request, for: self)
 	}
-
+	
+	public func updateContext(with response:DataResponseContext?) {
+		let updateContext = self.context?.update(response)
+		self.update(with: updateContext)
+	}
 	
 	open func contextWillChange() {}
 	open func contextDidChange() {}

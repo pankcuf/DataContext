@@ -103,6 +103,27 @@ extension UITableView {
 		return ctx?.getDefaultHeight() ?? 0
 	}
 	
+	@objc(tableView:willDisplayCell:forRowAtIndexPath:) open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+		
+		cell.context = self.tableDataContext()!.sectionContext[indexPath.section].rowContext[indexPath.row]
+	}
+	
+	open func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+		
+		if let headerSectionContext = self.tableDataContext()?.sectionContext[section].headerContext {
+			
+			view.context = headerSectionContext
+		}
+	}
+	
+	open func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+		
+		if let footerSectionContext = self.tableDataContext()?.sectionContext[section].footerContext {
+			
+			view.context = footerSectionContext
+		}
+	}
+
 	@objc(numberOfSectionsInTableView:) open func numberOfSections(in tableView: UITableView) -> Int {
 		
 		return self.tableDataContext()?.sectionContext.count ?? 0
