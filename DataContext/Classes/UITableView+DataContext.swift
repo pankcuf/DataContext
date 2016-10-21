@@ -15,30 +15,30 @@ extension UITableView {
 		
 		if let ctx = self.context as? TableDataContext {
 			
-			if let headerCtx = ctx.headerContext {
-				
-				self.tableHeaderView = Bundle.main.loadNibNamed(headerCtx.reuseId, owner: self, options: nil)?.first as? UIView
-				
-			} else {
-				
-				self.tableHeaderView = UIView()
-			}
-			
-			if let footerCtx = ctx.footerContext {
-				
-				self.tableFooterView = Bundle.main.loadNibNamed(footerCtx.reuseId, owner: self, options: nil)?.first as? UIView
-				
-			} else {
-				
-				self.tableFooterView = UIView()
-			}
-			
+			self.createHeader()
+			self.createFooter()
 			self.headers(ctx.uniqueHeaderIds())
 			self.headers(ctx.uniqueFooterIds())
 			self.cells(ctx.uniqueCellIds())
 		}
 	}
 	
+	open func createHeader() {
+		
+		if let headerCtx = self.tableDataContext()?.headerContext {
+			
+			self.tableHeaderView = Bundle.main.loadNibNamed(headerCtx.reuseId, owner: self, options: nil)?.first as? UIView
+		}
+	}
+	
+	open func createFooter() {
+		
+		if let footerCtx = self.tableDataContext()?.footerContext {
+			
+			self.tableFooterView = Bundle.main.loadNibNamed(footerCtx.reuseId, owner: self, options: nil)?.first as? UIView
+		}
+	}
+
 	override open func update(with context: ViewUpdateContext?) {
 		
 		if let tableCtx = context as? TableViewUpdateContext {
