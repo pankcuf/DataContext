@@ -17,11 +17,11 @@ open class TableViewSectionUpdateContext: NSObject {
 		case remove
 	}
 	
-	open var index:IndexSet
+	open var index:Int
 	open var animationType:UITableViewRowAnimation
 	open var actionType:Action
 	
-	public init(index:IndexSet, animationType:UITableViewRowAnimation, actionType:Action) {
+	public init(index:Int, animationType:UITableViewRowAnimation, actionType:Action) {
 		
 		self.index = index
 		self.animationType = animationType
