@@ -66,19 +66,19 @@ extension UITableView {
 			self.beginUpdates()
 			
 			for update in updates {
-				
+				let iset = IndexSet(integer: update.index)
 				switch update.actionType {
 					
 				case .add:
-					self.insertSections(update.index, with: update.animationType)
+					self.insertSections(iset, with: update.animationType)
 					break
 					
 				case .change:
-					self.reloadSections(update.index, with: update.animationType)
+					self.reloadSections(iset, with: update.animationType)
 					break
 					
 				case .remove:
-					self.deleteSections(update.index, with: update.animationType)
+					self.deleteSections(iset, with: update.animationType)
 					break
 				}
 			}

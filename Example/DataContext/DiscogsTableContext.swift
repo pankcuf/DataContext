@@ -31,7 +31,7 @@ class DiscogsTableContext: TableDataContext {
 				
 				self.sectionContext.append(TableDataSectionContext(rowContext: self.createRows(result)))
 				
-				let sectionUpdate = TableViewSectionUpdateContext(index: IndexSet(integer:0), animationType: .automatic, actionType: .add)
+				let sectionUpdate = TableViewSectionUpdateContext(index: 0, animationType: .automatic, actionType: .add)
 				
 				
 				return TableViewUpdateContext(sectionsUpdates: [sectionUpdate])
