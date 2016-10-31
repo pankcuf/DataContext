@@ -21,6 +21,28 @@ open class URLSessionTransport: DataTransport {
 		return URLSession.shared
 	}
 	
+	open override func doAction(requestContext: DataRequestContext<DataResponseContext>, callback: @escaping ActionCallback) {
+		
+		let urlRequest = requestContext as! URLRequestContext
+		
+		self._makeDataRequest(urlRequest.toURLRequest(), callback: self.responder(requestContext: requestContext, callback: callback))
+	}
+	
+	@discardableResult
+	fileprivate func _makeDataRequest(_ request: URLRequest, callback: @escaping TransportCallback) -> String {
+		
+		UIApplication.shared.isNetworkActivityIndicatorVisible = true
+		
+		let task = self.session.dataTask(with: request) { data, response, error in
+			
+			UIApplication.shared.isNetworkActivityIndicatorVisible = false
+			callback(data)
+		}
+		
+		return self.requestyy(task)
+	}
+
+	
 	open func requestyy(_ task:URLSessionDataTask) -> ActionID {
 		
 		let requestID = UUID().uuidString
