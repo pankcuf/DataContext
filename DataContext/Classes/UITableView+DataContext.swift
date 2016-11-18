@@ -100,12 +100,19 @@ extension UITableView {
 	@objc(tableView:heightForRowAtIndexPath:) open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		
 		let ctx = self.tableDataContext()?.sectionContext[indexPath.section].rowContext[indexPath.row]
-		return ctx?.getDefaultHeight() ?? 0
+		return ctx?.getDefaultHeight() ?? UITableViewAutomaticDimension
 	}
 	
+	@objc(tableView:estimatedHeightForRowAtIndexPath:) open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+		let ctx = self.tableDataContext()?.sectionContext[indexPath.section].rowContext[indexPath.row]
+		return ctx?.getDefaultHeight() ?? UITableViewAutomaticDimension
+	}
+
 	@objc(tableView:willDisplayCell:forRowAtIndexPath:) open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 		
-		cell.context = self.tableDataContext()!.sectionContext[indexPath.section].rowContext[indexPath.row]
+		if self.tableView(tableView, heightForRowAt: indexPath) != UITableViewAutomaticDimension {
+			cell.context = self.tableDataContext()!.sectionContext[indexPath.section].rowContext[indexPath.row]
+		}
 	}
 	
 	open func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -147,8 +154,9 @@ extension UITableView {
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: reuseId)!
 		
-		if self.rowHeight == UITableViewAutomaticDimension {
+		if self.tableView(tableView, heightForRowAt: indexPath) == UITableViewAutomaticDimension {
 			
+			cell.context = self.tableDataContext()!.sectionContext[indexPath.section].rowContext[indexPath.row]
 			cell.contentView.setNeedsLayout()
 			cell.contentView.layoutIfNeeded()
 		}
