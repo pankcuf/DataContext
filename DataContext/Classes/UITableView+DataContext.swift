@@ -83,9 +83,9 @@ extension UITableView {
 			self._separatorStyle = self.separatorStyle
 			self.separatorStyle = .none
 		
-		} else {
-			
-			self.separatorStyle = self._separatorStyle ?? .none
+		} else if let storedStyle = self._separatorStyle {
+		
+			self.separatorStyle = storedStyle
 		}
 	}
 
