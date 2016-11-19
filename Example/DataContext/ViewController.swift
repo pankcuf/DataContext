@@ -17,7 +17,7 @@ class ViewController: UITableViewController {
 		
 		super.viewDidLoad()
 
-		self.tableView.requestContextUpdates(DiscogsJsonRequest(artistID: 1102, responseType: DiscogsJsonResponse.self))
+		self.tableView.requestContextUpdates(DiscogsJsonRequest(artistID: 2522005, responseType: DiscogsJsonResponse.self))
 	}
 
 	override func loadView() {

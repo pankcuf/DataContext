@@ -13,6 +13,12 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		804AD7721DE0BF72000221F0 /* EmptyTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 804AD7711DE0BF72000221F0 /* EmptyTableView.xib */; };
+		804AD7731DE0BF72000221F0 /* EmptyTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 804AD7711DE0BF72000221F0 /* EmptyTableView.xib */; };
+		804AD7751DE0C46D000221F0 /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AD7741DE0C46D000221F0 /* EmptyTableView.swift */; };
+		804AD7761DE0C46D000221F0 /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AD7741DE0C46D000221F0 /* EmptyTableView.swift */; };
+		804AD7781DE0C4EF000221F0 /* DiscogsEmptyContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AD7771DE0C4EF000221F0 /* DiscogsEmptyContext.swift */; };
+		804AD7791DE0C4EF000221F0 /* DiscogsEmptyContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AD7771DE0C4EF000221F0 /* DiscogsEmptyContext.swift */; };
 		80A3B4821DB793E500B1417F /* DiscogsTableContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A3B4811DB793E500B1417F /* DiscogsTableContext.swift */; };
 		80A3B4841DB7943B00B1417F /* DiscogsJsonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A3B4831DB7943B00B1417F /* DiscogsJsonRequest.swift */; };
 		80A3B4861DB795DB00B1417F /* DiscogsJsonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A3B4851DB795DB00B1417F /* DiscogsJsonResponse.swift */; };
@@ -49,6 +55,9 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6AD9764058E4D69075CE6998 /* Pods-DataContext_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataContext_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DataContext_Tests/Pods-DataContext_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		804AD7711DE0BF72000221F0 /* EmptyTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyTableView.xib; sourceTree = "<group>"; };
+		804AD7741DE0C46D000221F0 /* EmptyTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
+		804AD7771DE0C4EF000221F0 /* DiscogsEmptyContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscogsEmptyContext.swift; sourceTree = "<group>"; };
 		80A3B4811DB793E500B1417F /* DiscogsTableContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscogsTableContext.swift; sourceTree = "<group>"; };
 		80A3B4831DB7943B00B1417F /* DiscogsJsonRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscogsJsonRequest.swift; sourceTree = "<group>"; };
 		80A3B4851DB795DB00B1417F /* DiscogsJsonResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscogsJsonResponse.swift; sourceTree = "<group>"; };
@@ -130,9 +139,12 @@
 				80A3B4831DB7943B00B1417F /* DiscogsJsonRequest.swift */,
 				80A3B4851DB795DB00B1417F /* DiscogsJsonResponse.swift */,
 				80A3B4811DB793E500B1417F /* DiscogsTableContext.swift */,
+				804AD7771DE0C4EF000221F0 /* DiscogsEmptyContext.swift */,
 				80A3B48F1DB8406300B1417F /* DiscogsCellContext.swift */,
 				80A3B48B1DB8404000B1417F /* DiscogsTableViewCell.swift */,
 				80A3B48C1DB8404000B1417F /* DiscogsTableViewCell.xib */,
+				804AD7741DE0C46D000221F0 /* EmptyTableView.swift */,
+				804AD7711DE0BF72000221F0 /* EmptyTableView.xib */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -233,10 +245,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 93BJFM79WN;
 						LastSwiftMigration = 0800;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 93BJFM79WN;
 						LastSwiftMigration = 0800;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -270,6 +284,7 @@
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				804AD7721DE0BF72000221F0 /* EmptyTableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +292,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				804AD7731DE0BF72000221F0 /* EmptyTableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,7 +396,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				804AD7781DE0C4EF000221F0 /* DiscogsEmptyContext.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				804AD7751DE0C46D000221F0 /* EmptyTableView.swift in Sources */,
 				80A3B48D1DB8404000B1417F /* DiscogsTableViewCell.swift in Sources */,
 				80A3B4821DB793E500B1417F /* DiscogsTableContext.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
@@ -394,7 +412,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				804AD7791DE0C4EF000221F0 /* DiscogsEmptyContext.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				804AD7761DE0C46D000221F0 /* EmptyTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +541,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 93BJFM79WN;
 				INFOPLIST_FILE = DataContext/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -536,6 +557,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 93BJFM79WN;
 				INFOPLIST_FILE = DataContext/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -550,6 +572,7 @@
 			baseConfigurationReference = 6AD9764058E4D69075CE6998 /* Pods-DataContext_Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 93BJFM79WN;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -571,6 +594,7 @@
 			baseConfigurationReference = 2C2C6CF7C0AF37D5F1A8BA90 /* Pods-DataContext_Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 93BJFM79WN;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

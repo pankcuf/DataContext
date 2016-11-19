@@ -12,6 +12,11 @@ open class TableViewUpdateContext: ViewUpdateContext {
 
 	open var sectionsUpdates:[TableViewSectionUpdateContext]?
 	
+	override public init() {
+		// empty
+		super.init()
+	}
+	
 	public init(sectionsUpdates:[TableViewSectionUpdateContext]?) {
 		
 		super.init()

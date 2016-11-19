@@ -10,6 +10,7 @@ import Foundation
 
 open class TableDataContext: DataContext {
 
+	open var emptyContext:TableDataEmptyContext?
 	open var headerContext:TableDataHeaderContext?
 	open var footerContext:TableDataHeaderContext?
 	open var sectionContext:[TableDataSectionContext]

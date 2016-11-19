@@ -75,6 +75,7 @@
 		78C0EDC656B9152FB603EC259D241DA5 /* FBSnapshotTestCase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9823197EA5904A9150FB0AD8B09841E6 /* FBSnapshotTestCase.framework */; };
 		7A36E9B6B520C83B5771061FC3943DA1 /* TableDataHeaderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24951FBEC1DFAD927F92EFDE7FC10702 /* TableDataHeaderContext.swift */; };
 		7F8AC53F92F56C3319DD733CAFB9DD58 /* BeAKindOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416DCDCE6819617145DEFCA518A50810 /* BeAKindOf.swift */; };
+		804AD7701DE0AEFF000221F0 /* TableDataEmptyContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AD76F1DE0AEFF000221F0 /* TableDataEmptyContext.swift */; };
 		82E55B1159083B37527C20EB4E621550 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD55F3974939097556240403DEE2DFF /* Nimble.framework */; };
 		83DA9B6F380D643725CFEE4E9AAB9F5D /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3E9E46640DBBCAB5505AB8F11882F5 /* Filter.swift */; };
 		8404F7168BDB16D6157E38B56C831CA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77FF979DB93FFC369BEC3D6B3C8B9C7A /* Foundation.framework */; };
@@ -316,6 +317,7 @@
 		7DB34BF24FC34A36FD4FD1D23B70E0D8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E02EE1341DC6E80EACF9C2D0E20210A /* Pods-DataContext_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DataContext_Tests-resources.sh"; sourceTree = "<group>"; };
 		7EE6E46DBD550BA5110C20BAB0809A7F /* RaisesException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RaisesException.swift; path = Sources/Nimble/Matchers/RaisesException.swift; sourceTree = "<group>"; };
+		804AD76F1DE0AEFF000221F0 /* TableDataEmptyContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableDataEmptyContext.swift; sourceTree = "<group>"; };
 		805EF8DE398C0351120C158B885E1465 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
 		84792A42C43FC0A1A9C82E3F54DF623B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85580713A609150A200367CA944ADD7A /* Pods-DataContext_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DataContext_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -758,6 +760,7 @@
 				52AF53B49A65F790DD7C91F1F03818F4 /* JSONSessionTransport.swift */,
 				4D099BDC1EA6BFC2452B623E42AF6B7D /* TableDataCellContext.swift */,
 				016EE95CBDABF21833EE9A932B9A9927 /* TableDataContext.swift */,
+				804AD76F1DE0AEFF000221F0 /* TableDataEmptyContext.swift */,
 				24951FBEC1DFAD927F92EFDE7FC10702 /* TableDataHeaderContext.swift */,
 				C590645353406D35A0C7205111C249E9 /* TableDataLeafContext.swift */,
 				72CBF6EAFB1BC55B1BA3A5CE3AAD691F /* TableDataSectionContext.swift */,
@@ -1168,6 +1171,7 @@
 				61B78BB060BC9FE15FF6CC2430594233 /* TableViewSectionUpdateContext.swift in Sources */,
 				1AD40FA8EDFFF86A0619E88AD4710E9B /* TableViewUpdateContext.swift in Sources */,
 				D967B2864EC041954D9A60642CA765B9 /* UITableView+DataContext.swift in Sources */,
+				804AD7701DE0AEFF000221F0 /* TableDataEmptyContext.swift in Sources */,
 				42E37620606FF7A95386FAEB92F5884B /* UITableView+Sugar.swift in Sources */,
 				C7EAD527F38939AD130E4D267BB4C239 /* UIView+DataContext.swift in Sources */,
 				A48C9144824B62598DB11C5DA635B989 /* URLRequestContext.swift in Sources */,

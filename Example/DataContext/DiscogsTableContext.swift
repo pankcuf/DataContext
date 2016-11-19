@@ -17,6 +17,7 @@ class DiscogsTableContext: TableDataContext {
 		super.init(transport: transport)
 		
 		self.cellReuseId = "DiscogsTableViewCell"
+		self.emptyContext = DiscogsEmptyContext(message: "Sorry. There's no releases!")
 	}
 
 	override func uniqueCellIds() -> [String] {
@@ -33,11 +34,10 @@ class DiscogsTableContext: TableDataContext {
 				
 				let sectionUpdate = TableViewSectionUpdateContext(index: 0, animationType: .automatic, actionType: .add)
 				
-				
 				return TableViewUpdateContext(sectionsUpdates: [sectionUpdate])
 			}
 		}
-		return nil
+		return TableViewUpdateContext()
 	}
 	
 	func createRows(_ releases:[ReleaseVO]) -> [TableDataCellContext] {

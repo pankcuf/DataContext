@@ -11,15 +11,34 @@ import UIKit
 
 extension UITableView {
 
+	@nonobjc static var SEPARATOR_STYLE_KEY = Int8(0x0001)
+	fileprivate var _separatorStyle: UITableViewCellSeparatorStyle? {
+		set {
+			objc_setAssociatedObject(self, &UITableView.SEPARATOR_STYLE_KEY, newValue, .OBJC_ASSOCIATION_RETAIN)
+		}
+		get {
+			return objc_getAssociatedObject(self, &UITableView.SEPARATOR_STYLE_KEY) as? UITableViewCellSeparatorStyle
+		}
+	}
+
 	open override func contextDidChange() {
 		
 		if let ctx = self.context as? TableDataContext {
 			
+			self.createEmptyView()
 			self.createHeader()
 			self.createFooter()
 			self.headers(ctx.uniqueHeaderIds())
 			self.headers(ctx.uniqueFooterIds())
 			self.cells(ctx.uniqueCellIds())
+		}
+	}
+	
+	open func createEmptyView() {
+		
+		if let emptyCtx = self.tableDataContext()?.emptyContext {
+			
+			self.backgroundView = Bundle.main.loadNibNamed(emptyCtx.reuseId, owner: self, options: nil)?.first as? UIView
 		}
 	}
 	
@@ -46,9 +65,30 @@ extension UITableView {
 			self.updateHeaderContext(tableCtx)
 			self.updateFooterContext(tableCtx)
 			self.updateRowContext(tableCtx)
+			self.updateEmptyContext(tableCtx)
 		}
 	}
 	
+	public func updateEmptyContext(_ response: TableViewUpdateContext?) {
+		
+		let ctx = self.tableDataContext()
+		
+		let hasNoSections = ctx?.sectionContext.isEmpty ?? true
+		
+		self.backgroundView?.isHidden = !hasNoSections
+		self.backgroundView?.context = ctx?.emptyContext
+		
+		if hasNoSections {
+			
+			self._separatorStyle = self.separatorStyle
+			self.separatorStyle = .none
+		
+		} else {
+			
+			self.separatorStyle = self._separatorStyle ?? .none
+		}
+	}
+
 	public func updateHeaderContext(_ response: TableViewUpdateContext?) {
 		
 		self.tableHeaderView?.context = self.tableDataContext()?.headerContext
@@ -117,17 +157,23 @@ extension UITableView {
 	
 	open func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
 		
-		if let headerSectionContext = self.tableDataContext()?.sectionContext[section].headerContext {
+		if self.tableView(tableView, heightForHeaderInSection: section) != UITableViewAutomaticDimension {
 			
-			view.context = headerSectionContext
+			if let headerSectionContext = self.tableDataContext()?.sectionContext[section].headerContext {
+			
+				view.context = headerSectionContext
+			}
 		}
 	}
 	
 	open func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
 		
-		if let footerSectionContext = self.tableDataContext()?.sectionContext[section].footerContext {
+		if self.tableView(tableView, heightForFooterInSection: section) != UITableViewAutomaticDimension {
 			
-			view.context = footerSectionContext
+			if let footerSectionContext = self.tableDataContext()?.sectionContext[section].footerContext {
+				
+				view.context = footerSectionContext
+			}
 		}
 	}
 
@@ -169,9 +215,10 @@ extension UITableView {
 		if let headerSectionContext = self.tableDataContext()?.sectionContext[section].headerContext {
 			
 			if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerSectionContext.reuseId) {
-				
-				if self.sectionHeaderHeight == UITableViewAutomaticDimension {
+
+				if self.tableView(tableView, heightForHeaderInSection: section) == UITableViewAutomaticDimension {
 					
+					header.context = headerSectionContext
 					header.contentView.setNeedsLayout()
 					header.contentView.layoutIfNeeded()
 				}
@@ -189,8 +236,9 @@ extension UITableView {
 			
 			if let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: footerSectionContext.reuseId) {
 				
-				if self.sectionFooterHeight == UITableViewAutomaticDimension {
+				if self.tableView(tableView, heightForFooterInSection: section) == UITableViewAutomaticDimension {
 					
+					footer.context = footerSectionContext
 					footer.contentView.setNeedsLayout()
 					footer.contentView.layoutIfNeeded()
 				}
