@@ -22,6 +22,16 @@ extension UIView {
 			return objc_getAssociatedObject(self, &UIView.CONTEXT_KEY) as? DataContext
 		}
 	}
+	
+	public func requestContextUpdates(_ request: DataRequestContext<DataResponseContext>, _ updateCallback:@escaping (() -> ())) {
+		
+		self.context?.requestUpdate(with: request, callback: { (updateContext: ViewUpdateContext?) in
+			DispatchQueue.main.async {
+				self.update(with: updateContext)
+				updateCallback()
+			}
+		})
+	}
 
 	public func requestContextUpdates(_ request: DataRequestContext<DataResponseContext>) {
 		
