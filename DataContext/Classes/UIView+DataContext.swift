@@ -26,10 +26,8 @@ extension UIView {
 	public func requestContextUpdates(_ request: DataRequestContext<DataResponseContext>, _ updateCallback:@escaping (() -> ())) {
 		
 		self.context?.requestUpdate(with: request, callback: { (updateContext: ViewUpdateContext?) in
-			DispatchQueue.main.async {
 				self.update(with: updateContext)
 				updateCallback()
-			}
 		})
 	}
 

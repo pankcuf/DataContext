@@ -34,17 +34,19 @@ open class DataContext: NSObject {
 
 		self.transport?.doAction(requestContext: request, callback: { (response:DataResponseContext?) in
 			
-			self.isUpdating = false
-			callback(self.update(response))
+			DispatchQueue.main.async {
+				
+				self.isUpdating = false
+				let updateContext = self.update(response)
+				callback(updateContext)
+			}
 		})
 	}
 	
 	open func requestUpdate(with request:DataRequestContext<DataResponseContext>, for view:UIView) {
 		
 		self.requestUpdate(with: request) { (updateContext:ViewUpdateContext?) in
-			DispatchQueue.main.async {
-				view.update(with: updateContext)
-			}
+			view.update(with: updateContext)
 		}
 	}
 	
