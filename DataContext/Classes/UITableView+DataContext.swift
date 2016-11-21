@@ -11,16 +11,6 @@ import UIKit
 
 extension UITableView {
 
-	@nonobjc static var SEPARATOR_STYLE_KEY = Int8(0x0001)
-	fileprivate var _separatorStyle: UITableViewCellSeparatorStyle? {
-		set {
-			objc_setAssociatedObject(self, &UITableView.SEPARATOR_STYLE_KEY, newValue, .OBJC_ASSOCIATION_RETAIN)
-		}
-		get {
-			return objc_getAssociatedObject(self, &UITableView.SEPARATOR_STYLE_KEY) as? UITableViewCellSeparatorStyle
-		}
-	}
-
 	open override func contextDidChange() {
 		
 		if let ctx = self.context as? TableDataContext {
@@ -77,16 +67,6 @@ extension UITableView {
 		
 		self.backgroundView?.isHidden = !hasNoSections
 		self.backgroundView?.context = ctx?.emptyContext
-		
-		if hasNoSections {
-			
-			self._separatorStyle = self.separatorStyle
-			self.separatorStyle = .none
-		
-		} else if let storedStyle = self._separatorStyle {
-		
-			self.separatorStyle = storedStyle
-		}
 	}
 
 	public func updateHeaderContext(_ response: TableViewUpdateContext?) {
