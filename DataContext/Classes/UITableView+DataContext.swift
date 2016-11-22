@@ -61,12 +61,12 @@ extension UITableView {
 	
 	open func updateEmptyContext(_ response: TableViewUpdateContext?) {
 		
-		let ctx = self.tableDataContext()
+		let ctx = self.tableDataContext()!
 		
-		let hasNoSections = ctx?.sectionContext.isEmpty ?? true
+		let hasNoSections = ctx.sectionContext.isEmpty
 		
 		self.backgroundView?.isHidden = !hasNoSections
-		self.backgroundView?.context = ctx?.emptyContext
+		self.backgroundView?.context = ctx.emptyContext
 	}
 
 	open func updateHeaderContext(_ response: TableViewUpdateContext?) {
@@ -187,7 +187,7 @@ extension UITableView {
 	
 	open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		return self.tableView(tableView, contextFor: section).rowContext.count ?? 0
+		return self.tableView(tableView, contextFor: section).rowContext.count
 	}
 	
 	@objc(tableView:cellForRowAtIndexPath:) open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
