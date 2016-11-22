@@ -59,7 +59,7 @@ extension UITableView {
 		}
 	}
 	
-	public func updateEmptyContext(_ response: TableViewUpdateContext?) {
+	open func updateEmptyContext(_ response: TableViewUpdateContext?) {
 		
 		let ctx = self.tableDataContext()
 		
@@ -69,24 +69,26 @@ extension UITableView {
 		self.backgroundView?.context = ctx?.emptyContext
 	}
 
-	public func updateHeaderContext(_ response: TableViewUpdateContext?) {
+	open func updateHeaderContext(_ response: TableViewUpdateContext?) {
 		
 		self.tableHeaderView?.context = self.tableDataContext()?.headerContext
 	}
 	
-	public func updateFooterContext(_ response: TableViewUpdateContext?) {
+	open func updateFooterContext(_ response: TableViewUpdateContext?) {
 		
 		self.tableFooterView?.context = self.tableDataContext()?.footerContext
 	}
 	
-	public func updateRowContext(_ response: TableViewUpdateContext?) {
+	open func updateRowContext(_ response: TableViewUpdateContext?) {
 		
 		if let updates = response?.sectionsUpdates {
 			
 			self.beginUpdates()
 			
 			for update in updates {
+				
 				let iset = IndexSet(integer: update.index)
+				
 				switch update.actionType {
 					
 				case .add:
@@ -115,23 +117,44 @@ extension UITableView {
 		return self.context as? TableDataContext
 	}
 	
+	open func tableView(_ tableView: UITableView, contextFor section: Int) -> TableDataSectionContext {
+		
+		let ctx = self.tableDataContext()!
+		
+		let sectionContext = ctx.sectionContext[section]
+		
+		return sectionContext
+	}
+
+	open func tableView(_ tableView: UITableView, contextForRowAt indexPath: IndexPath) -> TableDataCellContext {
+		
+		let sectionContext = self.tableView(tableView, contextFor: indexPath.section)
+		
+		let rowContext = sectionContext.rowContext[indexPath.row]
+		
+		return rowContext
+	}
+	
 	/// Table Delegates
 	
 	@objc(tableView:heightForRowAtIndexPath:) open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		
-		let ctx = self.tableDataContext()?.sectionContext[indexPath.section].rowContext[indexPath.row]
-		return ctx?.getDefaultHeight() ?? UITableViewAutomaticDimension
+		let ctx = self.tableView(tableView, contextForRowAt: indexPath)
+		
+		return ctx.getDefaultHeight()
 	}
 	
 	@objc(tableView:estimatedHeightForRowAtIndexPath:) open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-		let ctx = self.tableDataContext()?.sectionContext[indexPath.section].rowContext[indexPath.row]
-		return ctx?.getDefaultHeight() ?? UITableViewAutomaticDimension
+
+		let ctx = self.tableView(tableView, contextForRowAt: indexPath)
+		
+		return ctx.getDefaultHeight()
 	}
 
 	@objc(tableView:willDisplayCell:forRowAtIndexPath:) open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 		
 		if self.tableView(tableView, heightForRowAt: indexPath) != UITableViewAutomaticDimension {
-			cell.context = self.tableDataContext()!.sectionContext[indexPath.section].rowContext[indexPath.row]
+			cell.context = self.tableView(tableView, contextForRowAt: indexPath)
 		}
 	}
 	
@@ -139,7 +162,7 @@ extension UITableView {
 		
 		if self.tableView(tableView, heightForHeaderInSection: section) != UITableViewAutomaticDimension {
 			
-			if let headerSectionContext = self.tableDataContext()?.sectionContext[section].headerContext {
+			if let headerSectionContext = self.tableView(tableView, contextFor: section).headerContext {
 			
 				view.context = headerSectionContext
 			}
@@ -150,7 +173,7 @@ extension UITableView {
 		
 		if self.tableView(tableView, heightForFooterInSection: section) != UITableViewAutomaticDimension {
 			
-			if let footerSectionContext = self.tableDataContext()?.sectionContext[section].footerContext {
+			if let footerSectionContext = self.tableView(tableView, contextFor: section).footerContext {
 				
 				view.context = footerSectionContext
 			}
@@ -164,7 +187,7 @@ extension UITableView {
 	
 	open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		return self.tableDataContext()?.sectionContext[section].rowContext.count ?? 0
+		return self.tableView(tableView, contextFor: section).rowContext.count ?? 0
 	}
 	
 	@objc(tableView:cellForRowAtIndexPath:) open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -172,7 +195,7 @@ extension UITableView {
 		let section = indexPath.section
 		let row = indexPath.row
 		
-		let rows = self.tableDataContext()!.sectionContext[section].rowContext
+		let rows = self.tableView(tableView, contextFor: section).rowContext
 		
 		let cellContext = rows[row]
 		
@@ -182,7 +205,7 @@ extension UITableView {
 		
 		if self.tableView(tableView, heightForRowAt: indexPath) == UITableViewAutomaticDimension {
 			
-			cell.context = self.tableDataContext()!.sectionContext[indexPath.section].rowContext[indexPath.row]
+			cell.context = self.tableView(tableView, contextForRowAt: indexPath)
 			cell.contentView.setNeedsLayout()
 			cell.contentView.layoutIfNeeded()
 		}
@@ -192,7 +215,7 @@ extension UITableView {
 	
 	open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		
-		if let headerSectionContext = self.tableDataContext()?.sectionContext[section].headerContext {
+		if let headerSectionContext = self.tableView(tableView, contextFor: section).headerContext {
 			
 			if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerSectionContext.reuseId) {
 
@@ -212,7 +235,7 @@ extension UITableView {
 	
 	open func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 		
-		if let footerSectionContext = self.tableDataContext()?.sectionContext[section].footerContext {
+		if let footerSectionContext = self.tableView(tableView, contextFor: section).footerContext {
 			
 			if let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: footerSectionContext.reuseId) {
 				
@@ -231,11 +254,11 @@ extension UITableView {
 	}
 	
 	open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		return self.tableDataContext()?.sectionContext[section].headerContext?.getDefaultHeight() ?? 0
+		return self.tableView(tableView, contextFor: section).headerContext?.getDefaultHeight() ?? 0
 	}
 	
 	open func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-		return self.tableDataContext()?.sectionContext[section].footerContext?.getDefaultHeight() ?? 0
+		return self.tableView(tableView, contextFor: section).footerContext?.getDefaultHeight() ?? 0
 	}
 
 }
