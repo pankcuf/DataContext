@@ -12,9 +12,9 @@ import CoreData
 open class CoreDataRequestContext<ResponseType: DataResponseContext>: DataRequestContext<DataResponseContext> {
 	
 	open let entityName: String
-	open let predicate: NSPredicate
+	open let predicate: NSPredicate?
 	
-	public init(entityName: String, predicate: NSPredicate, responseType: ResponseType.Type) {
+	public init(entityName: String, predicate: NSPredicate?, responseType: ResponseType.Type) {
 		
 		self.entityName = entityName
 		self.predicate = predicate
