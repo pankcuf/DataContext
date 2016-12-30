@@ -24,18 +24,15 @@ class DiscogsTableContext: TableDataContext {
 		return [self.cellReuseId]
 	}
 	
-	override func update(_ response: DataResponseContext?) -> ViewUpdateContext? {
+	override func update(_ response: Any?) -> ViewUpdateContext? {
 		
-		if let parsedResponse = response as? DiscogsJsonResponse {
+		if let parsedResult = response as? [ReleaseVO] {
 			
-			if let result = parsedResponse.parse() as? [ReleaseVO] {
-				
-				self.sectionContext.append(TableDataSectionContext(rowContext: self.createRows(result)))
-				
-				let sectionUpdate = TableViewSectionUpdateContext(index: 0, animationType: .automatic, actionType: .add)
-				
-				return TableViewUpdateContext(sectionsUpdates: [sectionUpdate])
-			}
+			self.sectionContext.append(TableDataSectionContext(rowContext: self.createRows(parsedResult)))
+			
+			let sectionUpdate = TableViewSectionUpdateContext(index: 0, animationType: .automatic, actionType: .add)
+			
+			return TableViewUpdateContext(sectionsUpdates: [sectionUpdate])
 		}
 		return TableViewUpdateContext()
 	}

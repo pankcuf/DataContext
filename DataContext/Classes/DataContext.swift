@@ -12,45 +12,47 @@ open class DataContext: NSObject {
 	
 	public typealias ViewCallback = ((ViewUpdateContext?) -> ())
 
-	open var transport:DataTransport?
+	open var transport: DataTransport?
 	
-	open var isUpdating:Bool = false
+	open var isUpdating: Bool = false
 
 	public override init() {
 		
 		super.init()
 	}
 	
-	public init(transport:DataTransport?) {
+	public init(transport: DataTransport?) {
 		
 		super.init()
 		
 		self.transport = transport
 	}
 
-	open func requestUpdate(with request:DataRequestContext<DataResponseContext>, callback: @escaping ViewCallback) {
+	open func requestUpdate(with request: DataRequestContext<DataResponseContext>, callback: @escaping ViewCallback) {
 	
 		self.isUpdating = true
 
-		self.transport?.doAction(requestContext: request, callback: { (response:DataResponseContext?) in
+		self.transport?.doAction(requestContext: request) { (response:DataResponseContext?) in
+			
+			let result = response?.parse()
 			
 			DispatchQueue.main.async {
 				
 				self.isUpdating = false
-				let updateContext = self.update(response)
+				let updateContext = self.update(result)
 				callback(updateContext)
 			}
-		})
+		}
 	}
 	
-	open func requestUpdate(with request:DataRequestContext<DataResponseContext>, for view:UIView) {
+	open func requestUpdate(with request: DataRequestContext<DataResponseContext>, for view: UIView) {
 		
-		self.requestUpdate(with: request) { (updateContext:ViewUpdateContext?) in
+		self.requestUpdate(with: request) { (updateContext: ViewUpdateContext?) in
 			view.update(with: updateContext)
 		}
 	}
 	
-	open func update(_ response:DataResponseContext?) -> ViewUpdateContext? {
+	open func update(_ response: Any?) -> ViewUpdateContext? {
 		return ViewUpdateContext()
 	}
 	
