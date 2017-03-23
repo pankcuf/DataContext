@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DataContext'
-  s.version          = '0.1.20'
+  s.version          = '0.1.21'
   s.summary          = 'A data layers divided into contexts'
 
 # This description is used to generate tags and improve search results.

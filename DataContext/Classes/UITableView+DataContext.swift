@@ -67,16 +67,19 @@ extension UITableView {
 		
 		self.backgroundView?.isHidden = !hasNoSections
 		self.backgroundView?.context = ctx.emptyContext
+		self.backgroundView?.contextDelegate = self
 	}
 
 	open func updateHeaderContext(_ response: TableViewUpdateContext?) {
 		
 		self.tableHeaderView?.context = self.tableDataContext()?.headerContext
+		self.tableHeaderView?.contextDelegate = self
 	}
 	
 	open func updateFooterContext(_ response: TableViewUpdateContext?) {
 		
 		self.tableFooterView?.context = self.tableDataContext()?.footerContext
+		self.tableFooterView?.contextDelegate = self
 	}
 	
 	open func updateRowContext(_ response: TableViewUpdateContext?) {
@@ -155,6 +158,7 @@ extension UITableView {
 		
 		if self.tableView(tableView, heightForRowAt: indexPath) != UITableViewAutomaticDimension {
 			cell.context = self.tableView(tableView, contextForRowAt: indexPath)
+			cell.contextDelegate = self
 		}
 	}
 	
@@ -165,6 +169,7 @@ extension UITableView {
 			if let headerSectionContext = self.tableView(tableView, contextFor: section).headerContext {
 			
 				view.context = headerSectionContext
+				view.contextDelegate = self
 			}
 		}
 	}
@@ -176,6 +181,7 @@ extension UITableView {
 			if let footerSectionContext = self.tableView(tableView, contextFor: section).footerContext {
 				
 				view.context = footerSectionContext
+				view.contextDelegate = self
 			}
 		}
 	}
@@ -206,6 +212,7 @@ extension UITableView {
 		if self.tableView(tableView, heightForRowAt: indexPath) == UITableViewAutomaticDimension {
 			
 			cell.context = self.tableView(tableView, contextForRowAt: indexPath)
+			cell.contextDelegate = self
 			cell.contentView.setNeedsLayout()
 			cell.contentView.layoutIfNeeded()
 		}
@@ -222,6 +229,7 @@ extension UITableView {
 				if self.tableView(tableView, heightForHeaderInSection: section) == UITableViewAutomaticDimension {
 					
 					header.context = headerSectionContext
+					header.contextDelegate = self
 					header.contentView.setNeedsLayout()
 					header.contentView.layoutIfNeeded()
 				}
@@ -242,6 +250,7 @@ extension UITableView {
 				if self.tableView(tableView, heightForFooterInSection: section) == UITableViewAutomaticDimension {
 					
 					footer.context = footerSectionContext
+					footer.contextDelegate = self
 					footer.contentView.setNeedsLayout()
 					footer.contentView.layoutIfNeeded()
 				}

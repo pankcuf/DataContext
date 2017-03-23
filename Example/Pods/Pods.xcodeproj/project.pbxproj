@@ -76,6 +76,7 @@
 		7A36E9B6B520C83B5771061FC3943DA1 /* TableDataHeaderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24951FBEC1DFAD927F92EFDE7FC10702 /* TableDataHeaderContext.swift */; };
 		7F8AC53F92F56C3319DD733CAFB9DD58 /* BeAKindOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 416DCDCE6819617145DEFCA518A50810 /* BeAKindOf.swift */; };
 		804AD7701DE0AEFF000221F0 /* TableDataEmptyContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AD76F1DE0AEFF000221F0 /* TableDataEmptyContext.swift */; };
+		805F61CF1E83C66D00576AE9 /* DataContextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F61CE1E83C66D00576AE9 /* DataContextDelegate.swift */; };
 		808B7F0D1E08A0A3009C3812 /* CoreDataAsyncTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808B7F0C1E08A0A3009C3812 /* CoreDataAsyncTransport.swift */; };
 		808B7F0F1E08A26F009C3812 /* CoreDataRequestContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808B7F0E1E08A26F009C3812 /* CoreDataRequestContext.swift */; };
 		82E55B1159083B37527C20EB4E621550 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD55F3974939097556240403DEE2DFF /* Nimble.framework */; };
@@ -321,6 +322,7 @@
 		7EE6E46DBD550BA5110C20BAB0809A7F /* RaisesException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RaisesException.swift; path = Sources/Nimble/Matchers/RaisesException.swift; sourceTree = "<group>"; };
 		804AD76F1DE0AEFF000221F0 /* TableDataEmptyContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableDataEmptyContext.swift; sourceTree = "<group>"; };
 		805EF8DE398C0351120C158B885E1465 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
+		805F61CE1E83C66D00576AE9 /* DataContextDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataContextDelegate.swift; sourceTree = "<group>"; };
 		808B7F0C1E08A0A3009C3812 /* CoreDataAsyncTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataAsyncTransport.swift; sourceTree = "<group>"; };
 		808B7F0E1E08A26F009C3812 /* CoreDataRequestContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataRequestContext.swift; sourceTree = "<group>"; };
 		84792A42C43FC0A1A9C82E3F54DF623B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -758,6 +760,7 @@
 				808B7F0C1E08A0A3009C3812 /* CoreDataAsyncTransport.swift */,
 				808B7F0E1E08A26F009C3812 /* CoreDataRequestContext.swift */,
 				674D3B8855BF7470F41402762BC617E3 /* DataContext.swift */,
+				805F61CE1E83C66D00576AE9 /* DataContextDelegate.swift */,
 				58EF5CFB03BB52BBEBCDD50AA95581FE /* DataLeafContext.swift */,
 				1FBDE66DD521705C73A4091C278D0F14 /* DataRequestContext.swift */,
 				56D10F347083FECD8EDBB8056C6CF7A0 /* DataResponseContext.swift */,
@@ -1164,6 +1167,7 @@
 				808B7F0F1E08A26F009C3812 /* CoreDataRequestContext.swift in Sources */,
 				39A7AB14A5B1C346BE34ECE0AC1424E8 /* DataContext-dummy.m in Sources */,
 				889841D5F49432006A97D1C04BF7EFB1 /* DataContext.swift in Sources */,
+				805F61CF1E83C66D00576AE9 /* DataContextDelegate.swift in Sources */,
 				AB44FE76911C427FB0A4DA1564FDB835 /* DataLeafContext.swift in Sources */,
 				E22C385E8BFC1EEACBCC541EAE1EF7A1 /* DataRequestContext.swift in Sources */,
 				6E128361B127A144F34FDE32140E4877 /* DataResponseContext.swift in Sources */,
