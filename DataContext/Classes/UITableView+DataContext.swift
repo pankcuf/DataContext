@@ -61,7 +61,7 @@ extension UITableView {
 	
 	open func updateEmptyContext(_ response: TableViewUpdateContext?) {
 		
-		let ctx = self.tableDataContext()!
+		guard let ctx = self.tableDataContext() else { return }
 		
 		let hasNoSections = ctx.sectionContext.isEmpty
 		
@@ -122,7 +122,7 @@ extension UITableView {
 	
 	open func tableView(_ tableView: UITableView, contextFor section: Int) -> TableDataSectionContext? {
 		
-		let ctx = self.tableDataContext()!
+		guard let ctx = self.tableDataContext() else { return nil }
 		
 		let sectionContext = ctx.sectionContext[section]
 		
