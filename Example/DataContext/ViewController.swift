@@ -9,8 +9,6 @@
 import UIKit
 import DataContext
 
-//extension UITableView: UITableViewDelegate, UITableViewDataSource {}
-
 class ViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -23,7 +21,7 @@ class ViewController: UITableViewController {
 	override func loadView() {
 
 		let t = UITableView(frame: .zero, style: .plain)
-		let d = TableDataContextImpl()
+		let d = TableDataImpl()
 		t.delegate = d
 		t.dataSource = d
 		t.context = DiscogsTableContext(transport: JSONSessionTransport.shared)

@@ -82,6 +82,9 @@
 		80498EB41E8974BD008AFB11 /* CollectionViewSectionUpdateContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80498EAD1E8974BD008AFB11 /* CollectionViewSectionUpdateContext.swift */; };
 		80498EB51E8974BD008AFB11 /* CollectionViewUpdateContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80498EAE1E8974BD008AFB11 /* CollectionViewUpdateContext.swift */; };
 		80498EB61E8974BD008AFB11 /* CollectionDataSectionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80498EAF1E8974BD008AFB11 /* CollectionDataSectionContext.swift */; };
+		80498EB81E8979AE008AFB11 /* UICollectionView+Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80498EB71E8979AE008AFB11 /* UICollectionView+Sugar.swift */; };
+		80498EBA1E897A7C008AFB11 /* CollectionDataImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80498EB91E897A7C008AFB11 /* CollectionDataImpl.swift */; };
+		80498EBC1E897AC1008AFB11 /* TableDataImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80498EBB1E897AC1008AFB11 /* TableDataImpl.swift */; };
 		804AD7701DE0AEFF000221F0 /* TableDataEmptyContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804AD76F1DE0AEFF000221F0 /* TableDataEmptyContext.swift */; };
 		805F61CF1E83C66D00576AE9 /* DataContextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F61CE1E83C66D00576AE9 /* DataContextDelegate.swift */; };
 		808B7F0D1E08A0A3009C3812 /* CoreDataAsyncTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808B7F0C1E08A0A3009C3812 /* CoreDataAsyncTransport.swift */; };
@@ -334,6 +337,9 @@
 		80498EAD1E8974BD008AFB11 /* CollectionViewSectionUpdateContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewSectionUpdateContext.swift; sourceTree = "<group>"; };
 		80498EAE1E8974BD008AFB11 /* CollectionViewUpdateContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewUpdateContext.swift; sourceTree = "<group>"; };
 		80498EAF1E8974BD008AFB11 /* CollectionDataSectionContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionDataSectionContext.swift; sourceTree = "<group>"; };
+		80498EB71E8979AE008AFB11 /* UICollectionView+Sugar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Sugar.swift"; sourceTree = "<group>"; };
+		80498EB91E897A7C008AFB11 /* CollectionDataImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionDataImpl.swift; sourceTree = "<group>"; };
+		80498EBB1E897AC1008AFB11 /* TableDataImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableDataImpl.swift; sourceTree = "<group>"; };
 		804AD76F1DE0AEFF000221F0 /* TableDataEmptyContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableDataEmptyContext.swift; sourceTree = "<group>"; };
 		805EF8DE398C0351120C158B885E1465 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
 		805F61CE1E83C66D00576AE9 /* DataContextDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataContextDelegate.swift; sourceTree = "<group>"; };
@@ -773,6 +779,7 @@
 			children = (
 				80498EAC1E8974BD008AFB11 /* CollectionDataCellContext.swift */,
 				80498EA91E8974BD008AFB11 /* CollectionDataContext.swift */,
+				80498EB91E897A7C008AFB11 /* CollectionDataImpl.swift */,
 				80498EAB1E8974BD008AFB11 /* CollectionDataLeafContext.swift */,
 				80498EAF1E8974BD008AFB11 /* CollectionDataSectionContext.swift */,
 				80498EAD1E8974BD008AFB11 /* CollectionViewSectionUpdateContext.swift */,
@@ -791,11 +798,13 @@
 				016EE95CBDABF21833EE9A932B9A9927 /* TableDataContext.swift */,
 				804AD76F1DE0AEFF000221F0 /* TableDataEmptyContext.swift */,
 				24951FBEC1DFAD927F92EFDE7FC10702 /* TableDataHeaderContext.swift */,
+				80498EBB1E897AC1008AFB11 /* TableDataImpl.swift */,
 				C590645353406D35A0C7205111C249E9 /* TableDataLeafContext.swift */,
 				72CBF6EAFB1BC55B1BA3A5CE3AAD691F /* TableDataSectionContext.swift */,
 				E993479E2454AD3EDEB443278902590C /* TableViewSectionUpdateContext.swift */,
 				9874FC5E659AB1F5CE541B0EAA4B76EF /* TableViewUpdateContext.swift */,
 				80498EAA1E8974BD008AFB11 /* UICollectionView+DataContext.swift */,
+				80498EB71E8979AE008AFB11 /* UICollectionView+Sugar.swift */,
 				7520A1A1F0E87819D0455823F2D02E4E /* UITableView+DataContext.swift */,
 				8B8BA7A0FFA83306330A4DF79B357533 /* UITableView+Sugar.swift */,
 				21BB6E1D217B1ABC5507AB088924FB49 /* UIView+DataContext.swift */,
@@ -1192,12 +1201,15 @@
 				AB44FE76911C427FB0A4DA1564FDB835 /* DataLeafContext.swift in Sources */,
 				80498EB41E8974BD008AFB11 /* CollectionViewSectionUpdateContext.swift in Sources */,
 				E22C385E8BFC1EEACBCC541EAE1EF7A1 /* DataRequestContext.swift in Sources */,
+				80498EBA1E897A7C008AFB11 /* CollectionDataImpl.swift in Sources */,
 				6E128361B127A144F34FDE32140E4877 /* DataResponseContext.swift in Sources */,
 				FDEC2098B2F3B2EC1C0FC6711D79CEDF /* DataTransport.swift in Sources */,
 				4DD1C2D0E4730BC5004611724F5777B8 /* FakeDataTransport.swift in Sources */,
 				534AD3736A26FEADAA9359AB010CDFF3 /* JSONSessionTransport.swift in Sources */,
+				80498EBC1E897AC1008AFB11 /* TableDataImpl.swift in Sources */,
 				B393754D849AD452FDA4613097CA1DB6 /* TableDataCellContext.swift in Sources */,
 				D075CD99CE4C9E3118494C67E727D61D /* TableDataContext.swift in Sources */,
+				80498EB81E8979AE008AFB11 /* UICollectionView+Sugar.swift in Sources */,
 				7A36E9B6B520C83B5771061FC3943DA1 /* TableDataHeaderContext.swift in Sources */,
 				80498EB11E8974BD008AFB11 /* UICollectionView+DataContext.swift in Sources */,
 				C1BC506A9FF4EB769433521E4DEF4E77 /* TableDataLeafContext.swift in Sources */,
