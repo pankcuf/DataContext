@@ -11,5 +11,5 @@ import Foundation
 public protocol DataContextDelegate {
 
 	func update(with context: ViewUpdateContext?)
-
+	var context: DataContext? { get }
 }

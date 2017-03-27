@@ -38,8 +38,8 @@ extension UIView: DataContextDelegate {
 	public func requestContextUpdates(_ request: DataRequestContext<DataResponseContext>, _ updateCallback:@escaping (() -> ())) {
 		
 		self.context?.requestUpdate(with: request, callback: { (updateContext: ViewUpdateContext?) in
-				self.update(with: updateContext)
-				updateCallback()
+			self.update(with: updateContext)
+			updateCallback()
 		})
 	}
 
